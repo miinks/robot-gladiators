@@ -6,14 +6,20 @@ var randomNumber = function(min, max) {
     return value;
 };
 
-var fight = function(enemy) {
-  while (playerInfo.health > 0 && enemy.health > 0) {
- 
-    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-
+var fightOrSkip = function() {
+     var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+    if (promtFight === "" ||promptFight === null) {
    
-    if (promptFight === "skip" || promptFight === "SKIP") {
- 
+    if (promptFight === "skip" || promptFight === "SKIP"); 
+        window.alert("You need to provide a valid answer! Please try again!");
+
+        return fightOrSkip();
+    }
+
+    promptFight = promptFight.toLowerCase();
+
+    if (promptFight === "skip") {
+
       var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
      
@@ -21,10 +27,14 @@ var fight = function(enemy) {
         window.alert(playerName + ' has decided to skip this fight. Goodbye!');
      
        playerInfo.money = Math.max(0, player.Info.money - 10);
+       
        console.log("playerInfo.money", playerInfo.money)
-        break;
+        
+       return true;
       }
     }
+    return false;
+};
 
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
