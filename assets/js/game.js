@@ -36,6 +36,23 @@ var fightOrSkip = function() {
     return false;
 };
 
+var fight = function(enemy) {
+    var isPlayerTurn = true;
+
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
+
+    while (playerInfo.health > 0 && enemy.health > 0) {
+        if (isPlayerTurn) {
+            if (fightOrSkip()) {
+                break;
+            }
+        
+        }
+
+
+
     var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
     enemy.health = Math.max(0, enemy.health - damage);
@@ -110,23 +127,20 @@ var shop = function() {
     'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
   );
 
-  switch (shopOptionPrompt) {
-    case 'REFILL':
-    case 'refill':
-        playerInfo.refillHealth();
-        break;
-    case 'UPGRADE':
-    case 'upgrade':
-        playerInfo.upgradeAttack();
-        break;
-    case 'LEAVE':
-    case 'leave':
-      window.alert('Leaving the store.');
+  shopOptionPrompt = parseInt(shopOptionPrompt);
 
+  switch (shopOptionPrompt) {
+    case 1:
+      playerInfo.refillHealth();
+      break;
+    case 2:
+      playerInfo.upgradeAttack();
+      break;
+    case 3:
+      window.alert("Leaving the store.");
       break;
     default:
-      window.alert('You did not pick a valid option. Try again.');
-
+      window.alert("You did not pick a valid option. Try again.");
       shop();
       break;
   }
@@ -134,7 +148,7 @@ var shop = function() {
 
 // PLAYER INFORMATION // 
 var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
+  name: getPlayerName(),
   health: 100,
   attack: 10,
   money: 10,
@@ -166,25 +180,19 @@ var playerInfo = {
 };
 
 var enemyInfo = [
-  {
-    name: 'Roborto',
-    attack: randomNumber(10, 14)
-  },
-  {
-    name: 'Amy Android',
-    attack: randomNumber(10, 14)
-  },
-  {
-    name: 'Robo Trumble',
-    attack: randomNumber(10, 14)
-  }
-];
-
-console.log(enemyInfo);
-console.log(enemyInfo[0]);
-console.log(enemyInfo[0].name);
-console.log(enemyInfo[0]['attack']);
-
-startGame();
-
-
+    {
+      name: "Roborto",
+      attack: randomNumber(10, 14)
+    },
+    {
+      name: "Amy Android",
+      attack: randomNumber(10, 14)
+    },
+    {
+      name: "Robo Trumble",
+      attack: randomNumber(10, 14)
+    }
+  ];
+  
+  
+  startGame();
