@@ -8,7 +8,7 @@ var randomNumber = function(min, max) {
 
 var fightOrSkip = function() {
      var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-    if (promtFight === "" ||promptFight === null) {
+    if (promptFight === "" ||promptFight === null) {
    
     if (promptFight === "skip" || promptFight === "SKIP"); 
         window.alert("You need to provide a valid answer! Please try again!");
@@ -73,7 +73,7 @@ var fight = function(enemy) {
         window.alert(enemy.name + ' still has ' + enemy.health + ' health left. ');
      }
 
-    } else {
+    } else { 
 
 var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
@@ -104,6 +104,8 @@ var startGame = function() {
     playerInfo.reset();
 
   for (var i = 0; i < enemyInfo.length; i++) {
+
+
     if (playerInfo.health > 0) {
       window.alert('Welcome to Robot Gladiators! Round ' + (i + 1));
 
@@ -230,6 +232,14 @@ var enemyInfo = [
       name: "Robo Trumble",
       attack: randomNumber(10, 14)
     }
+    {
+        name: "Minks",
+        attack: randomNumber(10, 14)
+    },
+    {
+        name: "Graslowsnail",
+        attack: randomNumber(10,14)
+    },
   ];
   
   
